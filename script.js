@@ -1,22 +1,26 @@
 let angle = 0
 
 function setup() {
-    createCanvas(400, 300, WEBGL)
+    createCanvas(displayWidth, displayHeight, WEBGL)
 }
 
 function draw() {
-    background(175)
-
-    rectMode(CENTER)
-    noStroke()
-    fill(0, 0, 255)
-    translate(mouseX - width/2, mouseY - height/2)
-    rotateX(angle)
-    rotateY(angle * 0.3)
-    rotateZ(angle * 1.2)
-
+    let dx = mouseX - width / 2;
+    let dy = mouseY - height / 2;
+    let v = createVector(dx,dy,0);
+    v.normalize();
     
-    box(10, 100, 50)
+    ambientLight(0, 0, 255)
+    directionalLight(255, 0, 0, v)
+    
+    background(175)
+    specularMaterial(0, 0, 255)
+    noStroke()
+    rotateX(angle)
+    rotateY(angle * 0.5)
+ 
+
+    torus(100, 25)
 
     angle+=0.03
 }
