@@ -1,34 +1,26 @@
 let angle = 0
 
+let graphics
 
 function setup() {
-    createCanvas(windowWidth, windowHeight, WEBGL)
+    createCanvas(400, 400, WEBGL)
+    graphics = createGraphics(200, 200)
+    graphics.background(255)
 }
 
 function draw() {
     background(0)
 
-    // ortho()
-    pointLight(255, 255, 255, 0, -200, 200)
+    graphics.fill(255, 0, 255)
+    graphics.ellipse(mouseX, mouseY, 20)
+    ambientLight(100)
+    directionalLight(255, 255, 255, 1, 0, 1)
+    rotateX(angle)
+    rotateY(angle * 1.3)
+    rotateZ(angle * 0.7)
 
-    
-    for (let x = -200; x < 200; x += 50) {
-        push()
-        translate(x, 0, x - 200)
-        rotateX(angle)
-        rotateY(angle * 0.5)
-        noStroke()
-        ambientMaterial(255)
-        box(50)
-        pop()
-    }
-    
+    texture(graphics)
+    box(150)
 
-    translate(0, 100)
-    
-    rotateX(HALF_PI)
-    noStroke()
-    ambientMaterial(255)
-    plane(600,600)
     angle+=0.03
 }
