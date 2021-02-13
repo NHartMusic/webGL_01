@@ -1,11 +1,26 @@
 let angle = 0
 
+let mood
+
+
+
 let graphics
+
+let love
+
+function preload() {
+    mood = loadImage('./Tech_Triangle_02.png');
+}
 
 function setup() {
     createCanvas(400, 400, WEBGL)
     graphics = createGraphics(200, 200)
     graphics.background(255)
+
+    love = createGraphics(200, 200)
+    love.fill(255)
+    love.textAlign(CENTER)
+    love.text('love', 150, 50)
 }
 
 function draw() {
@@ -13,14 +28,14 @@ function draw() {
 
     graphics.fill(255, 0, 255)
     graphics.ellipse(mouseX, mouseY, 20)
-    ambientLight(100)
+    ambientLight(255)
     directionalLight(255, 255, 255, 1, 0, 1)
     rotateX(angle)
-    rotateY(angle * 1.3)
-    rotateZ(angle * 0.7)
+    rotateY(angle * 1.1)
+    rotateZ(angle * 0.8)
 
-    texture(graphics)
+    texture(mood)
     box(150)
 
-    angle+=0.03
+    angle+=0.02
 }
