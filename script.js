@@ -8,8 +8,10 @@ function setup() {
 function draw() {
     background(0)
 
-    let cameraX = map(mouseX, 0, width, 200, -200)
-    camera(cameraX, 0, (height/2) / tan(PI/6), cameraX, 0, 0, 0, 1, 0)
+    let fov = map(mouseX, 0, width, 0, PI)
+    let cameraZ = (height / 2.0) / tan((fov / 2))
+    perspective (fov, width / height, 0, 2000 )
+
     ambientLight(255)
 
     push()
