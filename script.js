@@ -8,26 +8,27 @@ function setup() {
 function draw() {
     background(0)
 
-    let fov = map(mouseX, 0, width, 0, PI)
-    let cameraZ = (height / 2.0) / tan((fov / 2))
-    perspective (fov, width / height, 0, 2000 )
+    // ortho()
+    pointLight(255, 255, 255, 0, -200, 200)
 
-    ambientLight(255)
-
-    push()
-    rotateX(angle)
-    rotateY(angle * 0.5)
-    noStroke()
-    normalMaterial()
-    box(100)
     
-    pop()
+    for (let x = -200; x < 200; x += 50) {
+        push()
+        translate(x, 0, x - 200)
+        rotateX(angle)
+        rotateY(angle * 0.5)
+        noStroke()
+        ambientMaterial(255)
+        box(50)
+        pop()
+    }
+    
 
     translate(0, 100)
     
     rotateX(HALF_PI)
     noStroke()
     ambientMaterial(255)
-    plane(500,500)
+    plane(600,600)
     angle+=0.03
 }
