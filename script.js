@@ -18,9 +18,11 @@ function setup() {
     graphics.background(255)
 
     love = createGraphics(200, 200)
+    love.background(255, 100)
     love.fill(255)
     love.textAlign(CENTER)
-    love.text('love', 150, 50)
+    love.textSize(64)
+    love.text('love', 100, 100)
 }
 
 function draw() {
@@ -34,7 +36,7 @@ function draw() {
     rotateY(angle * 1.1)
     rotateZ(angle * 0.8)
 
-    texture(mood)
+    texture(love)
     box(150)
 
     angle+=0.02
